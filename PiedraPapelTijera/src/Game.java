@@ -12,7 +12,7 @@ public class Game {
 	}
 
 	private void welcome() {
-		System.out.println("Bienvenido a nuestro pequeño juego: Piedra Papel Tijeras :-D");
+		System.out.println("Bienvenido a nuestro pequeño juego: Piedra Papel Tijeras Lagartija Spock:-D");
 	}
 
 	private void printHelp() {
@@ -20,6 +20,7 @@ public class Game {
 		System.out.println("Ordenes y comandos válidos para el juego: ");
 		parser.showCommands();
 	}
+
 
 	private Move computerMove() {
 		return parser.newRandomMove();

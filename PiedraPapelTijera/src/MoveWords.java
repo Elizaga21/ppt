@@ -2,11 +2,20 @@ import java.util.Random;
 
 public class MoveWords{
 
+	static String vs[][] = new String[5][5];
+
+	static final int PIEDRA = 0;
+
+	static final int PAPEL = 1;
+	static final int TIJERAS = 2;
+	static final int SPOCK = 3;
+	static final int LAGARTIJA = 4;
+
     public static final int EMPATE = 0;
     public static final int GANA = 1;
     public static final int PIERDE = 2;
 
-    private static final String[] validMoves = {"TIJERAS", "PAPEL", "PIEDRA"};
+    private static final String[] validMoves = {"TIJERAS", "PAPEL", "PIEDRA", "LAGARTIJA", "SPOCK"};
     private static final String[] validCommands = {"SALIR", "HELP"};
 
     private Random rnd;
@@ -14,6 +23,25 @@ public class MoveWords{
     public MoveWords(){
     	rnd = new Random();
     }
+
+	private static void setRules() {
+		for(int i=0; i<5; i++) {
+			for(int j=0; j<5; j++) {
+				vs[i][j] = "";
+			}
+		}
+
+		vs[PIEDRA][TIJERAS] = "crushes";
+		vs[PIEDRA][LAGARTIJA] = "crushes";
+		vs[PAPEL][PIEDRA] = "covers";
+		vs[PAPEL][SPOCK] = "disaproves";
+		vs[TIJERAS][PAPEL] = "cuts";
+		vs[TIJERAS][LAGARTIJA] = "decapitates";
+		vs[SPOCK][PIEDRA] = "vaporizes";
+		vs[SPOCK][TIJERAS] = "smashes";
+		vs[LAGARTIJA][PIEDRA] = "eats";
+		vs[LAGARTIJA][SPOCK] = "poisons";
+	}
     
     public boolean isValidMoveCommand(String value){
 
